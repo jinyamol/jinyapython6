@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="{{ form.name.id_for_label }}">Name:</label>
+        {{ form.name }}
+        <br><br>
+
+        <label for="{{ form.dob.id_for_label }}">Date of Birth:</label>
+        {{ form.dob }}
+        <br><br>
+
+        <label for="{{ form.age.id_for_label }}">Age:</label>
+        {{ form.age }}
+        <br><br>
+
+        <label for="{{ form.gender.id_for_label }}">Gender:</label>
+        {{ form.gender }}
+        <br><br>
+
+        <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+        {{ form.phone_number }}
+        <br><br>
+
+        <label for="{{ form.mail_id.id_for_label }}">Email:</label>
+        {{ form.mail_id }}
+        <br><br>
+
+        <label for="{{ form.address.id_for_label }}">Address:</label>
+        {{ form.address }}
+        <br><br>
+
+        <label for="{{ form.department.id_for_label }}">Department:</label>
+        {{ form.department }}
+        <br><br>
+
+        <label for="{{ form.course.id_for_label }}">Course:</label>
+        {{ form.course }}
+        <br><br>
+
+        <label for="{{ form.purpose.id_for_label }}">Purpose:</label>
+        {{ form.purpose }}
+        <br><br>
+
+        <fieldset>
+            <legend>Materials Provide:</legend>
+            {% for checkbox in form.materials_provide %}
+                <label for="{{ checkbox.id_for_label }}">
+                    {{ checkbox.choice_label }}
+                    {{ checkbox.tag }}
+                </label>
+                <br>
+            {% endfor %}
+        </fieldset>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+    {% if confirmation_message %}
+        <p>{{ confirmation_message }}</p>
+     <a href="/registration/logout">
+        <button>LOGOUT</button>
+        </a>
+        <a href="/">Return to Home</a>
+    {% endif %}
+</body>
+</html>
